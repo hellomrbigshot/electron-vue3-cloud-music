@@ -15,6 +15,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'import/no-extraneous-dependencies': ['error', { 'devDependencies': true }],
-    'max-len': 'off'
+    'max-len': 'off',
+    'semi': ['error', 'never'],
+    'comma-dangle': ['error', 'never']
   },
 };
