@@ -17,6 +17,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { 'devDependencies': true }],
     'max-len': 'off',
     'semi': ['error', 'never'],
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    'space-before-function-paren': ['error', 'always']
   },
 };
