@@ -1,23 +1,20 @@
 <template>
-  <ElContainer class="h-screen">
-    <ElHeader>Header</ElHeader>
+  <ElContainer class="h-screen flex-col">
+    <AppHeader/>
     <ElContainer>
-      <ElAside width="200px">Aside</ElAside>
-      <ElContainer>
-        <ElMain>Main</ElMain>
-        <ElFooter>Footer</ElFooter>
-      </ElContainer>
+      <AppAside/>
+      <ElMain>
+        <router-view></router-view>
+      </ElMain>
     </ElContainer>
+    <AppFooter/>
   </ElContainer>
 </template>
 <script lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, defineAsyncComponent } from 'vue'
 import {
   ElContainer,
-  ElHeader,
-  ElMain,
-  ElFooter,
-  ElAside
+  ElMain
 } from 'element-plus'
 
 interface ListItem {
@@ -25,12 +22,13 @@ interface ListItem {
 }
 
 export default {
+  name: 'App',
   components: {
     ElContainer,
-    ElHeader,
     ElMain,
-    ElFooter,
-    ElAside
+    AppHeader: defineAsyncComponent(() => import('@/components/App/AppHeader.vue')),
+    AppAside: defineAsyncComponent(() => import('@/components/App/AppAside.vue')),
+    AppFooter: defineAsyncComponent(() => import('@/components/App/AppFooter.vue'))
   },
   setup () {
     const list: ListItem[] = []
@@ -54,13 +52,10 @@ export default {
   color: #2c3e50;
   height: 100vh;
 }
-.el-header, .el-footer {
+.el-footer {
   background-color: #B3C0D1;
-  color: #333;
-  text-align: center;
   line-height: 60px;
 }
-
 .el-aside {
   background-color: #D3DCE6;
   color: #333;
